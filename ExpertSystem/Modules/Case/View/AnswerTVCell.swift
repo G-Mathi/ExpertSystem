@@ -8,6 +8,7 @@
 import UIKit
 
 class AnswerTVCell: UITableViewCell {
+    static let identifier = "AnswerTVCell"
     
     // MARK: - Oultes
 
@@ -35,8 +36,11 @@ extension AnswerTVCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = .link
         contentView.layer.cornerRadius = 20
+        
+        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        contentView.frame = contentView.frame.inset(by: margins)
     }
     
     override func prepareForReuse() {

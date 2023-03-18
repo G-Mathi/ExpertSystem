@@ -8,6 +8,7 @@
 import UIKit
 
 class ScenarioTVCell: UITableViewCell {
+    static let identifier = "ScenarioTVCell"
     
     // MARK: - Outlets
     
@@ -22,7 +23,7 @@ class ScenarioTVCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         selectionStyle = .none
-        accessoryType = .disclosureIndicator
+        accessoryType = .none
     }
 }
 
@@ -33,8 +34,11 @@ extension ScenarioTVCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = .link
         contentView.layer.cornerRadius = 20
+        
+        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        contentView.frame = contentView.frame.inset(by: margins)
     }
     
     override func prepareForReuse() {
