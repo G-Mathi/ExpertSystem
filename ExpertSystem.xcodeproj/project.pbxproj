@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F2E161E29C5725B0096DD85 /* ServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E161D29C5725A0096DD85 /* ServiceHelper.swift */; };
+		5F2E162229C573500096DD85 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162129C573500096DD85 /* EndPoints.swift */; };
+		5F2E162429C5749D0096DD85 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162329C5749D0096DD85 /* APIEnvironment.swift */; };
 		5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DC129C56FD9003FAD9C /* AppDelegate.swift */; };
 		5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DC329C56FD9003FAD9C /* SceneDelegate.swift */; };
 		5F443DC929C56FD9003FAD9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F443DC729C56FD9003FAD9C /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F2E161D29C5725A0096DD85 /* ServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelper.swift; sourceTree = "<group>"; };
+		5F2E162129C573500096DD85 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		5F2E162329C5749D0096DD85 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		5F443DBE29C56FD9003FAD9C /* ExpertSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpertSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F443DC129C56FD9003FAD9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F443DC329C56FD9003FAD9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +80,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F2E161A29C5720D0096DD85 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E161D29C5725A0096DD85 /* ServiceHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5F2E161B29C572130096DD85 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		5F2E161C29C5721A0096DD85 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E162129C573500096DD85 /* EndPoints.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
 		5F443DB529C56FD9003FAD9C = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +175,9 @@
 		5F443DF329C5706E003FAD9C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5F2E161B29C572130096DD85 /* APIs */,
+				5F2E161C29C5721A0096DD85 /* Endpoints */,
+				5F2E161A29C5720D0096DD85 /* Helpers */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -153,6 +185,7 @@
 		5F443DF429C5707E003FAD9C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5F2E162329C5749D0096DD85 /* APIEnvironment.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -305,6 +338,9 @@
 			files = (
 				5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */,
 				5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */,
+				5F2E162229C573500096DD85 /* EndPoints.swift in Sources */,
+				5F2E162429C5749D0096DD85 /* APIEnvironment.swift in Sources */,
+				5F2E161E29C5725B0096DD85 /* ServiceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
