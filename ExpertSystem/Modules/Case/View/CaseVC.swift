@@ -16,8 +16,8 @@ class CaseVC: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblCase: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var answersTableView: UITableView! {
         didSet {
@@ -40,7 +40,16 @@ class CaseVC: UIViewController {
     // MARK: - SetupUI
     
     private func setupUI() {
+        self.title = .Case
+        imageView.layer.cornerRadius = 8
         
+        setScreenState(isEmpty: true)
+    }
+    
+    private func setScreenState(isEmpty: Bool) {
+        lblCase.isHidden = isEmpty
+        imageView.isHidden = isEmpty
+        answersTableView.isHidden = isEmpty
     }
 }
 
@@ -49,10 +58,14 @@ class CaseVC: UIViewController {
 extension CaseVC {
     
     private func configure() {
+        
+        /// If Selected case available configure the UI with appropirate data
         guard let selectedCase = vm.getSelectedCase() else {
-            /// Show alert
+            showFailedAlert(title: .Sorry, message: .SomethingWentWrong)
             return
         }
+        
+        setScreenState(isEmpty: false)
         
         lblCase.text = selectedCase.text
         answersTableView.reloadData()
@@ -65,25 +78,6 @@ extension CaseVC {
             imageView.image = nil
             imageView.isHidden = true
         }
-    }
-    
-    private func retrieveAndSetImage(for url: URL) {
-        let imageDownloader = ImageDownloader(
-            configuration: ImageDownloader.defaultURLSessionConfiguration(),
-            downloadPrioritization: .fifo,
-            maximumActiveDownloads: 1,
-            imageCache: AutoPurgingImageCache()
-        )
-        
-        let urlRequest = URLRequest(url: url)
-
-        imageDownloader.download(urlRequest, completion:  { response in
-            if case .success(let image) = response.result {
-                DispatchQueue.main.async { [weak self] in
-                    self?.imageView.image = image
-                }
-            }
-        })
     }
 }
 
@@ -101,20 +95,55 @@ extension CaseVC {
                 }
             } else {
                 if let message {
-                    self?.showAlert(title: .Alert, message: message)
+                    self?.showFailedAlert(title: .Sorry, message: message)
                 }
             }
         }
     }
     
-    private func showAlert(title: String, message: String) {
+    // MARK: GET Thumnail
+    
+    /*
+     * Download or retreive image from cache in backgorund thread using AlamofireImage,
+     * And set the image using main thred.
+     * If image not available, hide the ImageView
+     */
+    private func retrieveAndSetImage(for url: URL) {
+        let imageDownloader = ImageDownloader(
+            configuration: ImageDownloader.defaultURLSessionConfiguration(),
+            downloadPrioritization: .fifo,
+            maximumActiveDownloads: 1,
+            imageCache: AutoPurgingImageCache()
+        )
+        
+        let urlRequest = URLRequest(url: url)
+
+        imageDownloader.download(urlRequest, completion:  { [weak self] response in
+            if case .success(let image) = response.result {
+                DispatchQueue.main.async { [weak self] in
+                    self?.imageView.image = image
+                }
+            } else {
+                self?.imageView.isHidden = true
+            }
+        })
+    }
+}
+
+// MARK: - Show Alert
+
+extension CaseVC {
+    
+    private func showFailedAlert(title: String, message: String) {
         DispatchQueue.main.async {
-            AlertProvider.showAlert(
+            AlertProvider.showAlertWithActions(
                 target: self,
                 title: title,
                 message: message,
-                action: AlertAction(title: .Dismiss)
-            )
+                actions: [AlertAction(title: .Dismiss)]
+            ) { action in
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }
@@ -150,5 +179,13 @@ extension CaseVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return .Answers
     }
 }

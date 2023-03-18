@@ -12,6 +12,7 @@ class AnswerTVCell: UITableViewCell {
     
     // MARK: - Oultes
 
+    @IBOutlet weak var ViewBackground: UIView!
     @IBOutlet weak var lblAnswer: UILabel!
     
     // MARK: - Init View
@@ -36,11 +37,8 @@ extension AnswerTVCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.backgroundColor = .link
-        contentView.layer.cornerRadius = 20
-        
-        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        contentView.frame = contentView.frame.inset(by: margins)
+        ViewBackground.backgroundColor = .link
+        ViewBackground.layer.cornerRadius = 8
     }
     
     override func prepareForReuse() {

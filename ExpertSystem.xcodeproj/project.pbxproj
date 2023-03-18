@@ -31,6 +31,7 @@
 		5F443DD929C56FDE003FAD9C /* ExpertSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DD829C56FDE003FAD9C /* ExpertSystemTests.swift */; };
 		5F443DE329C56FDE003FAD9C /* ExpertSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE229C56FDE003FAD9C /* ExpertSystemUITests.swift */; };
 		5F443DE529C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */; };
+		5FBA5EE329C5EF6B00FC7774 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE229C5EF6B00FC7774 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		5F443DDE29C56FDE003FAD9C /* ExpertSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpertSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F443DE229C56FDE003FAD9C /* ExpertSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITests.swift; sourceTree = "<group>"; };
 		5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5FBA5EE229C5EF6B00FC7774 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				5F2E164529C5B8660096DD85 /* Localizer.swift */,
+				5FBA5EE229C5EF6B00FC7774 /* Strings.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				5F2E164129C5B17E0096DD85 /* AnswerTVCell.swift in Sources */,
 				5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */,
 				5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */,
+				5FBA5EE329C5EF6B00FC7774 /* Strings.swift in Sources */,
 				5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */,
 				5F2E162C29C57A030096DD85 /* Scenario.swift in Sources */,
 				5F2E162229C573500096DD85 /* EndPoints.swift in Sources */,

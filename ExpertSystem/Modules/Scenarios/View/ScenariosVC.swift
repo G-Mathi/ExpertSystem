@@ -36,7 +36,8 @@ class ScenariosVC: UIViewController {
     // MARK: - SetupUI
     
     private func setupUI() {
-        
+        self.title = .Scenario
+        scenariosTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -109,8 +110,8 @@ extension ScenariosVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let caseId = vm.getScenario(at: indexPath.row)?.caseId {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            if let caseVC = storyBoard.instantiateViewController(withIdentifier: "CaseVC") as? CaseVC {
+            let storyBoard = UIStoryboard(name: .StoryBoard.Main.rawValue, bundle: nil)
+            if let caseVC = storyBoard.instantiateViewController(withIdentifier: .Controllers.Case.rawValue) as? CaseVC {
                 caseVC.vm.setCaseId(with: caseId)
                 self.navigationController?.pushViewController(caseVC, animated: true)
             }
@@ -118,6 +119,6 @@ extension ScenariosVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return UITableView.automaticDimension
     }
 }

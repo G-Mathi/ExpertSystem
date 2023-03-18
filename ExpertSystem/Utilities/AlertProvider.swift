@@ -21,6 +21,19 @@ open class AlertProvider {
         
         target.present(alertController, animated: true, completion: nil)
     }
+    
+    open class func showAlertWithActions(target: UIViewController, title: String?, message: String, actions: [AlertAction], completion: @escaping ((_ action: UIAlertAction) -> Void)) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        actions.forEach({ action in
+            let _action = UIAlertAction(title: action.title, style: action.style) { (action: UIAlertAction) in
+                completion(action)
+            }
+            alertController.addAction(_action)
+        })
+        
+        target.present(alertController, animated: true, completion: nil)
+    }
 }
 
 

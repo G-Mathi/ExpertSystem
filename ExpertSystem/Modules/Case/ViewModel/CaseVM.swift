@@ -38,7 +38,7 @@ extension CaseVM {
     func getCaseInfo(completion: @escaping (Bool, String?) -> Void) {
         
         guard let selectedCaseId else {
-            completion(false, "No id found")
+            completion(false, .UpdateApp)
             return
         }
         
@@ -52,9 +52,9 @@ extension CaseVM {
                 let message: String?
                 switch error {
                 case .invalidRequest:
-                    message = "Please update the app to continue..."
+                    message = .UpdateApp
                 case .clientError, .serverError, .noData, .dataDecodingError:
-                    message = "Please try again later..."
+                    message = .SomethingWentWrong
                 }
                 completion(false, message)
             }
