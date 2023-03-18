@@ -7,23 +7,30 @@
 
 import Foundation
 
-open class ScenariosAPI {
+class ScenariosAPI {
     
     public static let session = URLSession.shared
     
-    open class func getScenariosData(completion: @escaping (Result<[Scenario], RequestError>) -> Void) {
+}
+
+extension ScenariosAPI {
+    
+    public class func getScenariosData(completion: @escaping (Result<[Scenario], RequestError>) -> Void) {
         let request = ScenariosAPI.getScenariosWithRequestBuilder()
         
         ScenariosAPI.getData(for: request) { result in
             completion(result)
         }
     }
+}
+
+extension ScenariosAPI {
     
-    open class func getScenariosWithRequestBuilder() -> URLRequest? {
+    private class func getScenariosWithRequestBuilder() -> URLRequest? {
         return EndPoint.getScenarios().request
     }
     
-    open class func getData(for request: URLRequest?, completion: @escaping (Result<[Scenario], RequestError>) -> Void) {
+    private class func getData(for request: URLRequest?, completion: @escaping (Result<[Scenario], RequestError>) -> Void) {
         
         guard let request else {
             completion(.failure(.invalidRequest))

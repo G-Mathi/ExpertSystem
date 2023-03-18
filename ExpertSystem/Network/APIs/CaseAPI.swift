@@ -11,19 +11,26 @@ open class CaseAPI {
     
     public static let session = URLSession.shared
     
-    open class func getCaseData(of id: Int, completion: @escaping (Result<[Case], RequestError>) -> Void) {
+}
+
+extension CaseAPI {
+    
+    public class func getCaseData(of id: Int, completion: @escaping (Result<[Case], RequestError>) -> Void) {
         let request = CaseAPI.getCaseInfoWithRequestBuilder(of: id)
         
         CaseAPI.getData(for: request) { result in
             completion(result)
         }
     }
+}
+
+extension CaseAPI {
     
-    open class func getCaseInfoWithRequestBuilder(of id: Int) -> URLRequest? {
+    private class func getCaseInfoWithRequestBuilder(of id: Int) -> URLRequest? {
         return EndPoint.getCase(caseId: id).request
     }
     
-    open class func getData(for request: URLRequest?, completion: @escaping (Result<[Case], RequestError>) -> Void) {
+    private class func getData(for request: URLRequest?, completion: @escaping (Result<[Case], RequestError>) -> Void) {
         
         guard let request else {
             completion(.failure(.invalidRequest))
