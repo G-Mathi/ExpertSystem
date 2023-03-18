@@ -2,32 +2,46 @@
 //  ScenariosVM.swift
 //  ExpertSystem
 //
-//  Created by dilax on 2023-03-18.
+//  Created by Mathi on 2023-03-18.
 //
 
 import Foundation
 
 class ScenariosVM: NSObject {
     
-    func getdata() {
+    // MARK: - Variables
+    
+    private var scenarios: [Scenario]?
+    
+    func getScenariosCount() -> Int {
+        return scenarios?.count ?? 0
+    }
+    
+    func getScenario(at index: Int) -> Scenario? {
+        return scenarios?[index]
+    }
+}
 
-        ScenariosAPI.getScenariosData { result in
+// MARK: - GET Scenarios
+
+extension ScenariosVM {
+    
+    func getScenarios(completion: @escaping (Bool, String?) -> Void) {
+        ScenariosAPI.getScenariosData { [weak self] result in
             switch result {
-            case .success(let data):
-                print(data)
-                break
+            case .success(let scenarios):
+                self?.scenarios = scenarios
+                completion(true, nil)
+                
             case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
-        CaseAPI.getCaseData(of: 1) { result in
-            switch result {
-            case .success(let data):
-                print(data)
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
+                let message: String?
+                switch error {
+                case .invalidRequest:
+                    message = "Please update the app to continue..."
+                case .clientError, .serverError, .noData, .dataDecodingError:
+                    message = "Please try again later..."
+                }
+                completion(false, message)
             }
         }
     }

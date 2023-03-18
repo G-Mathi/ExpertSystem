@@ -1,5 +1,5 @@
 //
-//  ScenariosRequest.swift
+//  Scenario.swift
 //  ExpertSystem
 //
 //  Created by Mathi on 2023-03-18.
