@@ -9,7 +9,7 @@ import Foundation
 
 enum EndPoint {
     case getScenarios(path: String = "scenarios", queryItems: [URLQueryItem]? = nil)
-    case getCase(path: String = "scenarios/cases/", queryItems: [URLQueryItem]? = nil)
+    case getCase(path: String = "scenarios/cases/", caseId: Int, queryItems: [URLQueryItem]? = nil)
     
     var request: URLRequest? {
         guard let url = url else { return nil }
@@ -44,8 +44,8 @@ enum EndPoint {
         switch self {
         case .getScenarios(let path, _):
             return route + path
-        case .getCase(let path, _):
-            return route + path
+        case .getCase(let path, let caseId, _):
+            return route + path + String(caseId)
         }
     }
     

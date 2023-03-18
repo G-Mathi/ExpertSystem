@@ -10,6 +10,10 @@
 		5F2E161E29C5725B0096DD85 /* ServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E161D29C5725A0096DD85 /* ServiceHelper.swift */; };
 		5F2E162229C573500096DD85 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162129C573500096DD85 /* EndPoints.swift */; };
 		5F2E162429C5749D0096DD85 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162329C5749D0096DD85 /* APIEnvironment.swift */; };
+		5F2E162629C5765D0096DD85 /* ScenariosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162529C5765D0096DD85 /* ScenariosAPI.swift */; };
+		5F2E162C29C57A030096DD85 /* ScenariosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162B29C57A030096DD85 /* ScenariosRequest.swift */; };
+		5F2E163229C598370096DD85 /* CaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163129C598370096DD85 /* CaseRequest.swift */; };
+		5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163329C59AAE0096DD85 /* CaseAPI.swift */; };
 		5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DC129C56FD9003FAD9C /* AppDelegate.swift */; };
 		5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DC329C56FD9003FAD9C /* SceneDelegate.swift */; };
 		5F443DC929C56FD9003FAD9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F443DC729C56FD9003FAD9C /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 		5F2E161D29C5725A0096DD85 /* ServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelper.swift; sourceTree = "<group>"; };
 		5F2E162129C573500096DD85 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		5F2E162329C5749D0096DD85 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
+		5F2E162529C5765D0096DD85 /* ScenariosAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosAPI.swift; sourceTree = "<group>"; };
+		5F2E162B29C57A030096DD85 /* ScenariosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosRequest.swift; sourceTree = "<group>"; };
+		5F2E163129C598370096DD85 /* CaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseRequest.swift; sourceTree = "<group>"; };
+		5F2E163329C59AAE0096DD85 /* CaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseAPI.swift; sourceTree = "<group>"; };
 		5F443DBE29C56FD9003FAD9C /* ExpertSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpertSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F443DC129C56FD9003FAD9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F443DC329C56FD9003FAD9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +99,8 @@
 		5F2E161B29C572130096DD85 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				5F2E162529C5765D0096DD85 /* ScenariosAPI.swift */,
+				5F2E163329C59AAE0096DD85 /* CaseAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -101,6 +111,70 @@
 				5F2E162129C573500096DD85 /* EndPoints.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		5F2E162729C579E60096DD85 /* Scenarios */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E162A29C579F30096DD85 /* View */,
+				5F2E162929C579EF0096DD85 /* ViewModel */,
+				5F2E162829C579EB0096DD85 /* Model */,
+			);
+			path = Scenarios;
+			sourceTree = "<group>";
+		};
+		5F2E162829C579EB0096DD85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E162B29C57A030096DD85 /* ScenariosRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5F2E162929C579EF0096DD85 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5F2E162A29C579F30096DD85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5F2E162D29C596E60096DD85 /* Case */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E163029C596F40096DD85 /* View */,
+				5F2E162F29C596EF0096DD85 /* ViewModel */,
+				5F2E162E29C596EC0096DD85 /* Model */,
+			);
+			path = Case;
+			sourceTree = "<group>";
+		};
+		5F2E162E29C596EC0096DD85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E163129C598370096DD85 /* CaseRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5F2E162F29C596EF0096DD85 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5F2E163029C596F40096DD85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5F443DB529C56FD9003FAD9C = {
@@ -167,6 +241,8 @@
 		5F443DF229C5705E003FAD9C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5F2E162729C579E60096DD85 /* Scenarios */,
+				5F2E162D29C596E60096DD85 /* Case */,
 				5F443DC729C56FD9003FAD9C /* Main.storyboard */,
 			);
 			path = Modules;
@@ -336,8 +412,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F2E162629C5765D0096DD85 /* ScenariosAPI.swift in Sources */,
+				5F2E163229C598370096DD85 /* CaseRequest.swift in Sources */,
 				5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */,
 				5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */,
+				5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */,
+				5F2E162C29C57A030096DD85 /* ScenariosRequest.swift in Sources */,
 				5F2E162229C573500096DD85 /* EndPoints.swift in Sources */,
 				5F2E162429C5749D0096DD85 /* APIEnvironment.swift in Sources */,
 				5F2E161E29C5725B0096DD85 /* ServiceHelper.swift in Sources */,

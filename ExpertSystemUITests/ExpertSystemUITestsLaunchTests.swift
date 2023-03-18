@@ -2,7 +2,7 @@
 //  ExpertSystemUITestsLaunchTests.swift
 //  ExpertSystemUITests
 //
-//  Created by dilax on 2023-03-18.
+//  Created by Mathi on 2023-03-18.
 //
 
 import XCTest
