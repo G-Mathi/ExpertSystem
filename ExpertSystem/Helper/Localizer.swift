@@ -23,6 +23,7 @@ extension String {
     
     static let SomethingWentWrong = NSLocalizedString("Something went wrong...", comment: "")
     static let UpdateApp = NSLocalizedString("Please update the app to continue...", comment: "")
+    static let NoInternet = NSLocalizedString("Please check your internet connection...", comment: "")
     
     // MARK: - Controllers
     

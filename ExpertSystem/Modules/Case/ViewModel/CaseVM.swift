@@ -11,11 +11,15 @@ class CaseVM: NSObject {
 
     // MARK: - Variables
     
-    private var selectedCaseId: Int?
+    private var initialCaseId: Int?
     private var selectedCase: Case?
     
-    public func setCaseId(with id: Int) {
-        selectedCaseId = id
+    public func setInitialCaseId(with id: Int) {
+        initialCaseId = id
+    }
+    
+    func getInitialCaseId() -> Int? {
+        return initialCaseId
     }
     
     func getSelectedCase() -> Case? {
@@ -35,14 +39,9 @@ class CaseVM: NSObject {
 
 extension CaseVM {
     
-    func getCaseInfo(completion: @escaping (Bool, String?) -> Void) {
+    func getCaseInfo(caseId: Int, completion: @escaping (Bool, String?) -> Void) {
         
-        guard let selectedCaseId else {
-            completion(false, .UpdateApp)
-            return
-        }
-        
-        CaseAPI.getCaseData(of: selectedCaseId) { [weak self] result in
+        CaseAPI.getCaseData(of: caseId) { [weak self] result in
             switch result {
             case .success(let cases):
                 self?.selectedCase = cases.first
@@ -55,6 +54,8 @@ extension CaseVM {
                     message = .UpdateApp
                 case .clientError, .serverError, .noData, .dataDecodingError:
                     message = .SomethingWentWrong
+                case .internetNotAvailable:
+                    message = .NoInternet
                 }
                 completion(false, message)
             }

@@ -15,6 +15,7 @@ public enum RequestError: Error {
     case serverError
     case noData
     case dataDecodingError
+    case internetNotAvailable
 }
 
 // MARK: - HTTP

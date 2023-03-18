@@ -37,9 +37,11 @@ extension ScenariosVM {
                 let message: String?
                 switch error {
                 case .invalidRequest:
-                    message = "Please update the app to continue..."
+                    message = .UpdateApp
                 case .clientError, .serverError, .noData, .dataDecodingError:
-                    message = "Please try again later..."
+                    message = .SomethingWentWrong
+                case .internetNotAvailable:
+                    message = .NoInternet
                 }
                 completion(false, message)
             }

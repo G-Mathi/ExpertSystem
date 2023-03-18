@@ -12,7 +12,7 @@
 		5F2E162429C5749D0096DD85 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162329C5749D0096DD85 /* APIEnvironment.swift */; };
 		5F2E162629C5765D0096DD85 /* ScenariosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162529C5765D0096DD85 /* ScenariosAPI.swift */; };
 		5F2E162C29C57A030096DD85 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162B29C57A030096DD85 /* Scenario.swift */; };
-		5F2E163229C598370096DD85 /* CaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163129C598370096DD85 /* CaseRequest.swift */; };
+		5F2E163229C598370096DD85 /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163129C598370096DD85 /* Case.swift */; };
 		5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163329C59AAE0096DD85 /* CaseAPI.swift */; };
 		5F2E163729C5A3990096DD85 /* ScenariosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163629C5A3990096DD85 /* ScenariosVC.swift */; };
 		5F2E163929C5AA730096DD85 /* ScenariosVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163829C5AA730096DD85 /* ScenariosVM.swift */; };
@@ -32,6 +32,7 @@
 		5F443DE329C56FDE003FAD9C /* ExpertSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE229C56FDE003FAD9C /* ExpertSystemUITests.swift */; };
 		5F443DE529C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */; };
 		5FBA5EE329C5EF6B00FC7774 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE229C5EF6B00FC7774 /* Strings.swift */; };
+		5FBA5EE529C5F5B200FC7774 /* InternetAvailablility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,7 @@
 		5F2E162329C5749D0096DD85 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		5F2E162529C5765D0096DD85 /* ScenariosAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosAPI.swift; sourceTree = "<group>"; };
 		5F2E162B29C57A030096DD85 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
-		5F2E163129C598370096DD85 /* CaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseRequest.swift; sourceTree = "<group>"; };
+		5F2E163129C598370096DD85 /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		5F2E163329C59AAE0096DD85 /* CaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseAPI.swift; sourceTree = "<group>"; };
 		5F2E163529C5A3130096DD85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5F2E163629C5A3990096DD85 /* ScenariosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosVC.swift; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		5F443DE229C56FDE003FAD9C /* ExpertSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITests.swift; sourceTree = "<group>"; };
 		5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5FBA5EE229C5EF6B00FC7774 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetAvailablility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +184,7 @@
 		5F2E162E29C596EC0096DD85 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5F2E163129C598370096DD85 /* CaseRequest.swift */,
+				5F2E163129C598370096DD85 /* Case.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +303,7 @@
 			children = (
 				5F2E162329C5749D0096DD85 /* APIEnvironment.swift */,
 				5F2E164229C5B7FA0096DD85 /* AlertProvider.swift */,
+				5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -461,8 +464,9 @@
 				5F2E164329C5B7FA0096DD85 /* AlertProvider.swift in Sources */,
 				5F2E162629C5765D0096DD85 /* ScenariosAPI.swift in Sources */,
 				5F2E163D29C5B0280096DD85 /* CaseVC.swift in Sources */,
+				5FBA5EE529C5F5B200FC7774 /* InternetAvailablility.swift in Sources */,
 				5F2E163929C5AA730096DD85 /* ScenariosVM.swift in Sources */,
-				5F2E163229C598370096DD85 /* CaseRequest.swift in Sources */,
+				5F2E163229C598370096DD85 /* Case.swift in Sources */,
 				5F2E163729C5A3990096DD85 /* ScenariosVC.swift in Sources */,
 				5F2E164129C5B17E0096DD85 /* AnswerTVCell.swift in Sources */,
 				5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */,

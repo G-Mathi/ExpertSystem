@@ -30,11 +30,9 @@ class CaseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.getCaseAndConfigure()
-        }
+        setupUI()
+        initialCaseConfiguration()
     }
     
     // MARK: - SetupUI
@@ -50,6 +48,20 @@ class CaseVC: UIViewController {
         lblCase.isHidden = isEmpty
         imageView.isHidden = isEmpty
         answersTableView.isHidden = isEmpty
+    }
+    
+    private func initialCaseConfiguration() {
+        /// Check for initialCaseId availability
+        guard let selectedCaseId = vm.getInitialCaseId() else {
+            showFailedAlert(title: .Sorry, message: .UpdateApp)
+            return
+        }
+        
+        /// Call request to GET data in Background Thread
+        /// As it called from a touch action and high priority QOS set to UserInitiated
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.getCaseAndConfigure(caseId: selectedCaseId)
+        }
     }
 }
 
@@ -71,7 +83,7 @@ extension CaseVC {
         answersTableView.reloadData()
         
         if let image = selectedCase.image, let url = URL(string: image) {
-            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.retrieveAndSetImage(for: url)
             }
         } else {
@@ -87,15 +99,17 @@ extension CaseVC {
     
     // MARK: GET Scenarios
     
-    private func getCaseAndConfigure() {
-        vm.getCaseInfo { [weak self] success, message in
+    private func getCaseAndConfigure(caseId: Int) {
+        vm.getCaseInfo(caseId: caseId) { [weak self] success, message in
             if success {
                 DispatchQueue.main.async {
                     self?.configure()
                 }
             } else {
                 if let message {
-                    self?.showFailedAlert(title: .Sorry, message: message)
+                    DispatchQueue.main.async {
+                        self?.showFailedAlert(title: .Sorry, message: message)
+                    }
                 }
             }
         }
@@ -117,7 +131,7 @@ extension CaseVC {
         )
         
         let urlRequest = URLRequest(url: url)
-
+        
         imageDownloader.download(urlRequest, completion:  { [weak self] response in
             if case .success(let image) = response.result {
                 DispatchQueue.main.async { [weak self] in
@@ -130,20 +144,19 @@ extension CaseVC {
     }
 }
 
+
 // MARK: - Show Alert
 
 extension CaseVC {
     
     private func showFailedAlert(title: String, message: String) {
-        DispatchQueue.main.async {
-            AlertProvider.showAlertWithActions(
-                target: self,
-                title: title,
-                message: message,
-                actions: [AlertAction(title: .Dismiss)]
-            ) { action in
-                self.navigationController?.popViewController(animated: true)
-            }
+        AlertProvider.showAlertWithActions(
+            target: self,
+            title: title,
+            message: message,
+            actions: [AlertAction(title: .Dismiss)]
+        ) { action in
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

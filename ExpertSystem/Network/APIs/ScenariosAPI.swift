@@ -32,6 +32,11 @@ extension ScenariosAPI {
     
     private class func getData(for request: URLRequest?, completion: @escaping (Result<[Scenario], RequestError>) -> Void) {
         
+        guard Availablity.isInternetAvailable() else {
+            completion(.failure(.internetNotAvailable))
+            return
+        }
+        
         guard let request else {
             completion(.failure(.invalidRequest))
             return

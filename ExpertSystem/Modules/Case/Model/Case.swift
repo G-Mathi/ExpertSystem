@@ -1,5 +1,5 @@
 //
-//  CaseRequest.swift
+//  Case.swift
 //  ExpertSystem
 //
 //  Created by Mathi on 2023-03-18.

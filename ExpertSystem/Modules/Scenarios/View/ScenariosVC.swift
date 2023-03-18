@@ -21,6 +21,7 @@ class ScenariosVC: UIViewController {
             scenariosTableView.dataSource = self
         }
     }
+    @IBOutlet weak var lblNoContent: UILabel!
     
     // MARK: - View LifeCycle
     
@@ -38,6 +39,13 @@ class ScenariosVC: UIViewController {
     private func setupUI() {
         self.title = .Scenario
         scenariosTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        setScreenState(isEmpty: true)
+    }
+    
+    private func setScreenState(isEmpty: Bool) {
+        scenariosTableView.isHidden = isEmpty
+        lblNoContent.isHidden = !isEmpty
     }
 }
 
@@ -46,6 +54,7 @@ class ScenariosVC: UIViewController {
 extension ScenariosVC {
     
     private func configure() {
+        setScreenState(isEmpty: false)
         scenariosTableView.reloadData()
     }
 }
@@ -112,7 +121,7 @@ extension ScenariosVC: UITableViewDelegate {
         if let caseId = vm.getScenario(at: indexPath.row)?.caseId {
             let storyBoard = UIStoryboard(name: .StoryBoard.Main.rawValue, bundle: nil)
             if let caseVC = storyBoard.instantiateViewController(withIdentifier: .Controllers.Case.rawValue) as? CaseVC {
-                caseVC.vm.setCaseId(with: caseId)
+                caseVC.vm.setInitialCaseId(with: caseId)
                 self.navigationController?.pushViewController(caseVC, animated: true)
             }
         }
