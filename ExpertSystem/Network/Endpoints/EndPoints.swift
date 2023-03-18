@@ -25,7 +25,7 @@ enum EndPoint {
     private var url: URL? {
         var components = URLComponents()
         
-        components.scheme = HTTP.Scheme.https.rawValue
+        components.scheme = HTTP.Scheme.http.rawValue
         components.host = host
         components.path = path
         components.queryItems = queryItems

@@ -14,6 +14,7 @@
 		5F2E162C29C57A030096DD85 /* ScenariosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E162B29C57A030096DD85 /* ScenariosRequest.swift */; };
 		5F2E163229C598370096DD85 /* CaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163129C598370096DD85 /* CaseRequest.swift */; };
 		5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163329C59AAE0096DD85 /* CaseAPI.swift */; };
+		5F2E163729C5A3990096DD85 /* ScenariosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E163629C5A3990096DD85 /* ScenariosVC.swift */; };
 		5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DC129C56FD9003FAD9C /* AppDelegate.swift */; };
 		5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DC329C56FD9003FAD9C /* SceneDelegate.swift */; };
 		5F443DC929C56FD9003FAD9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F443DC729C56FD9003FAD9C /* Main.storyboard */; };
@@ -49,6 +50,8 @@
 		5F2E162B29C57A030096DD85 /* ScenariosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosRequest.swift; sourceTree = "<group>"; };
 		5F2E163129C598370096DD85 /* CaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseRequest.swift; sourceTree = "<group>"; };
 		5F2E163329C59AAE0096DD85 /* CaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseAPI.swift; sourceTree = "<group>"; };
+		5F2E163529C5A3130096DD85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5F2E163629C5A3990096DD85 /* ScenariosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosVC.swift; sourceTree = "<group>"; };
 		5F443DBE29C56FD9003FAD9C /* ExpertSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpertSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F443DC129C56FD9003FAD9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F443DC329C56FD9003FAD9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 		5F2E162A29C579F30096DD85 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5F2E163629C5A3990096DD85 /* ScenariosVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +219,7 @@
 		5F443DD729C56FDE003FAD9C /* ExpertSystemTests */ = {
 			isa = PBXGroup;
 			children = (
+				5F2E163529C5A3130096DD85 /* Info.plist */,
 				5F443DD829C56FDE003FAD9C /* ExpertSystemTests.swift */,
 			);
 			path = ExpertSystemTests;
@@ -414,6 +419,7 @@
 			files = (
 				5F2E162629C5765D0096DD85 /* ScenariosAPI.swift in Sources */,
 				5F2E163229C598370096DD85 /* CaseRequest.swift in Sources */,
+				5F2E163729C5A3990096DD85 /* ScenariosVC.swift in Sources */,
 				5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */,
 				5F443DC429C56FD9003FAD9C /* SceneDelegate.swift in Sources */,
 				5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */,
@@ -663,6 +669,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7XSG63BDFK;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExpertSystemTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mathi.ExpertSystemTests;
@@ -683,6 +691,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7XSG63BDFK;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExpertSystemTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mathi.ExpertSystemTests;
