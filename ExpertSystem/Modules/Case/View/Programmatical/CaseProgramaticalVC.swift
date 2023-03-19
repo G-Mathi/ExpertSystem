@@ -37,7 +37,7 @@ class CaseProgramaticalVC: UIViewController {
     
     private var imageViewThumnail: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 8

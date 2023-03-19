@@ -41,6 +41,9 @@ class ScenariosVC: UIViewController {
         scenariosTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         setScreenState(isEmpty: true)
+        
+        /// Set hidden for initial load
+        lblNoContent.isHidden = true
     }
     
     private func setScreenState(isEmpty: Bool) {
@@ -74,6 +77,7 @@ extension ScenariosVC {
             } else {
                 if let message {
                     DispatchQueue.main.async {
+                        self?.setScreenState(isEmpty: true)
                         self?.showFailedAlert(title: .Sorry, message: message)
                     }
                 }
