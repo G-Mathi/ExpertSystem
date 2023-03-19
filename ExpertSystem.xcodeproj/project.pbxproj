@@ -33,6 +33,7 @@
 		5F443DE529C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */; };
 		5F965C3629C72606008537D8 /* CaseProgramaticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */; };
 		5F965C3A29C72750008537D8 /* LabelCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F965C3929C72750008537D8 /* LabelCVCell.swift */; };
+		5F965C3D29C72815008537D8 /* OneLabelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F965C3C29C72815008537D8 /* OneLabelProtocol.swift */; };
 		5FB7F3EE29C6D6BA00314DC4 /* LabelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3ED29C6D6BA00314DC4 /* LabelTVCell.swift */; };
 		5FB7F3F329C6DED500314DC4 /* LabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F229C6DED500314DC4 /* LabelTableView.swift */; };
 		5FB7F3F629C6E75000314DC4 /* LabelViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F529C6E75000314DC4 /* LabelViewVM.swift */; };
@@ -89,6 +90,7 @@
 		5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseProgramaticalVC.swift; sourceTree = "<group>"; };
 		5F965C3929C72750008537D8 /* LabelCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCVCell.swift; sourceTree = "<group>"; };
+		5F965C3C29C72815008537D8 /* OneLabelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLabelProtocol.swift; sourceTree = "<group>"; };
 		5FB7F3ED29C6D6BA00314DC4 /* LabelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTVCell.swift; sourceTree = "<group>"; };
 		5FB7F3F229C6DED500314DC4 /* LabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableView.swift; sourceTree = "<group>"; };
 		5FB7F3F529C6E75000314DC4 /* LabelViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewVM.swift; sourceTree = "<group>"; };
@@ -186,8 +188,7 @@
 		5F2E162D29C596E60096DD85 /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				5F965C3329C725D0008537D8 /* Programmatical */,
-				5FB7F3FE29C7069C00314DC4 /* StoryBoard */,
+				5F965C3E29C72897008537D8 /* View */,
 				5F2E162F29C596EF0096DD85 /* ViewModel */,
 				5F2E162E29C596EC0096DD85 /* Model */,
 			);
@@ -208,15 +209,6 @@
 				5F2E163E29C5B0460096DD85 /* CaseVM.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		5F2E163029C596F40096DD85 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5F2E163C29C5B0280096DD85 /* CaseVC.swift */,
-				5F2E164029C5B17E0096DD85 /* AnswerTVCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		5F2E164429C5B85C0096DD85 /* Helper */ = {
@@ -340,15 +332,24 @@
 		5F965C3329C725D0008537D8 /* Programmatical */ = {
 			isa = PBXGroup;
 			children = (
-				5F965C3429C725E1008537D8 /* View */,
+				5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */,
 			);
 			path = Programmatical;
 			sourceTree = "<group>";
 		};
-		5F965C3429C725E1008537D8 /* View */ = {
+		5F965C3B29C727EA008537D8 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */,
+				5F965C3C29C72815008537D8 /* OneLabelProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5F965C3E29C72897008537D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F965C3329C725D0008537D8 /* Programmatical */,
+				5FB7F3FE29C7069C00314DC4 /* StoryBoard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,19 +373,10 @@
 		5FB7F3F029C6DE7700314DC4 /* LableTableView */ = {
 			isa = PBXGroup;
 			children = (
-				5FB7F3F129C6DE7E00314DC4 /* View */,
-				5FB7F3F429C6E73E00314DC4 /* ViewModel */,
-			);
-			path = LableTableView;
-			sourceTree = "<group>";
-		};
-		5FB7F3F129C6DE7E00314DC4 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				5FB7F3F229C6DED500314DC4 /* LabelTableView.swift */,
 				5FB7F3ED29C6D6BA00314DC4 /* LabelTVCell.swift */,
 			);
-			path = View;
+			path = LableTableView;
 			sourceTree = "<group>";
 		};
 		5FB7F3F429C6E73E00314DC4 /* ViewModel */ = {
@@ -398,18 +390,10 @@
 		5FB7F3F929C7041500314DC4 /* LabelCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				5FB7F3FA29C7042400314DC4 /* View */,
-			);
-			path = LabelCollectionView;
-			sourceTree = "<group>";
-		};
-		5FB7F3FA29C7042400314DC4 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				5FB7F3FB29C7043100314DC4 /* LabelCollectionView.swift */,
 				5F965C3929C72750008537D8 /* LabelCVCell.swift */,
 			);
-			path = View;
+			path = LabelCollectionView;
 			sourceTree = "<group>";
 		};
 		5FB7F3FD29C7066200314DC4 /* OneLabelView */ = {
@@ -417,6 +401,8 @@
 			children = (
 				5FB7F3F929C7041500314DC4 /* LabelCollectionView */,
 				5FB7F3F029C6DE7700314DC4 /* LableTableView */,
+				5FB7F3F429C6E73E00314DC4 /* ViewModel */,
+				5F965C3B29C727EA008537D8 /* Protocol */,
 			);
 			path = OneLabelView;
 			sourceTree = "<group>";
@@ -424,7 +410,8 @@
 		5FB7F3FE29C7069C00314DC4 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				5F2E163029C596F40096DD85 /* View */,
+				5F2E163C29C5B0280096DD85 /* CaseVC.swift */,
+				5F2E164029C5B17E0096DD85 /* AnswerTVCell.swift */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -583,6 +570,7 @@
 				5FBA5EE329C5EF6B00FC7774 /* Strings.swift in Sources */,
 				5F965C3629C72606008537D8 /* CaseProgramaticalVC.swift in Sources */,
 				5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */,
+				5F965C3D29C72815008537D8 /* OneLabelProtocol.swift in Sources */,
 				5F2E162C29C57A030096DD85 /* Scenario.swift in Sources */,
 				5F965C3A29C72750008537D8 /* LabelCVCell.swift in Sources */,
 				5F2E162229C573500096DD85 /* EndPoints.swift in Sources */,

@@ -251,7 +251,7 @@ extension CaseProgramaticalVC {
 
 // MARK: - LabelTableView Delegate
 
-extension CaseProgramaticalVC: LabelTableViewDelegate {
+extension CaseProgramaticalVC: OneLabelViewDelegate {
     
     func didSelectedAnswer(at index: Int) {
         /// Get next case from the selection

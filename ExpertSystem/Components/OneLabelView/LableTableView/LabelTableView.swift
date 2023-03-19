@@ -7,16 +7,12 @@
 
 import UIKit
 
-protocol LabelTableViewDelegate: AnyObject {
-    func didSelectedAnswer(at index: Int)
-}
-
 class LabelTableView: UIView {
     
     // MARK: - Variables
     
     private let vm = LabelViewVM()
-    weak var delegate: LabelTableViewDelegate?
+    weak var delegate: OneLabelViewDelegate?
     
     // MARK: - Components
     
