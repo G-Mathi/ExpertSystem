@@ -32,7 +32,6 @@
 		5F443DE329C56FDE003FAD9C /* ExpertSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE229C56FDE003FAD9C /* ExpertSystemUITests.swift */; };
 		5F443DE529C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */; };
 		5F965C3629C72606008537D8 /* CaseProgramaticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */; };
-		5F965C3829C72628008537D8 /* AnswerProgramaticalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F965C3729C72628008537D8 /* AnswerProgramaticalCVCell.swift */; };
 		5FB7F3EE29C6D6BA00314DC4 /* LabelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3ED29C6D6BA00314DC4 /* LabelTVCell.swift */; };
 		5FB7F3F329C6DED500314DC4 /* LabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F229C6DED500314DC4 /* LabelTableView.swift */; };
 		5FB7F3F629C6E75000314DC4 /* LabelViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F529C6E75000314DC4 /* LabelViewVM.swift */; };
@@ -88,7 +87,6 @@
 		5F443DE229C56FDE003FAD9C /* ExpertSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITests.swift; sourceTree = "<group>"; };
 		5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseProgramaticalVC.swift; sourceTree = "<group>"; };
-		5F965C3729C72628008537D8 /* AnswerProgramaticalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerProgramaticalCVCell.swift; sourceTree = "<group>"; };
 		5FB7F3ED29C6D6BA00314DC4 /* LabelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTVCell.swift; sourceTree = "<group>"; };
 		5FB7F3F229C6DED500314DC4 /* LabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableView.swift; sourceTree = "<group>"; };
 		5FB7F3F529C6E75000314DC4 /* LabelViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewVM.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				5F965C3529C72606008537D8 /* CaseProgramaticalVC.swift */,
-				5F965C3729C72628008537D8 /* AnswerProgramaticalCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -584,7 +581,6 @@
 				5F965C3629C72606008537D8 /* CaseProgramaticalVC.swift in Sources */,
 				5F2E163429C59AAE0096DD85 /* CaseAPI.swift in Sources */,
 				5F2E162C29C57A030096DD85 /* Scenario.swift in Sources */,
-				5F965C3829C72628008537D8 /* AnswerProgramaticalCVCell.swift in Sources */,
 				5F2E162229C573500096DD85 /* EndPoints.swift in Sources */,
 				5F2E163B29C5AB110096DD85 /* ScenarioTVCell.swift in Sources */,
 				5FB7F3F629C6E75000314DC4 /* LabelViewVM.swift in Sources */,
