@@ -61,8 +61,11 @@ class CaseProgramaticalVC: UIViewController {
         setupUI()
         setUIAccordingToCaseId(for: vm.getInitialCaseId())
     }
-    
-    // MARK: - SetupUI
+}
+
+// MARK: - SetupUI
+
+extension CaseProgramaticalVC {
     
     private func setupUI() {
         self.title = .Case
@@ -94,6 +97,56 @@ class CaseProgramaticalVC: UIViewController {
     }
 }
 
+// MARK: - Set QuestionView
+
+extension CaseProgramaticalVC {
+    
+    private func setContainerQuestion() {
+        view.addSubview(containerQuestion)
+        
+        let safeArea = view.safeAreaLayoutGuide
+        let constraintsContainerQuestion = [
+            containerQuestion.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 30),
+            containerQuestion.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
+            containerQuestion.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
+        ]
+        
+        NSLayoutConstraint.activate(constraintsContainerQuestion)
+        
+        addViewsToContainer()
+        setImageView()
+    }
+    
+    private func addViewsToContainer() {
+        containerQuestion.addArrangedSubview(lblQuestion)
+        containerQuestion.addArrangedSubview(imageViewThumnail)
+    }
+    
+    private func setImageView() {
+        imageViewThumnail.heightAnchor.constraint(equalTo: imageViewThumnail.widthAnchor, multiplier: 0.5).isActive = true
+    }
+}
+
+// MARK: - Set AnswerView
+
+extension CaseProgramaticalVC {
+    
+    private func setAnswerView() {
+        view.addSubview(answerView)
+        
+        answerView.delegate = self
+        
+        let safeArea = view.safeAreaLayoutGuide
+        let constraintsAnswerColectionView = [
+            answerView.topAnchor.constraint(equalTo: containerQuestion.bottomAnchor, constant: 16),
+            answerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            answerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
+            answerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
+        ]
+        NSLayoutConstraint.activate(constraintsAnswerColectionView)
+    }
+}
+
 // MARK: - Configure
 
 extension CaseProgramaticalVC {
@@ -106,10 +159,13 @@ extension CaseProgramaticalVC {
             return
         }
         
+        /// Set Screen State
         setScreenState(isEmpty: false)
         
+        /// Set Question
         lblQuestion.text = currentCase.text
         
+        /// Configuration for the view to show the list
         if let answers = currentCase.answers {
             let model = answers.map { scenario in
                 if let text = scenario.text {
@@ -118,9 +174,10 @@ extension CaseProgramaticalVC {
                     return ""
                 }
             }
-            answerView.configure(with: model)
+            answerView.configure(with: model, scenario: .Answers)
         }
         
+        /// Retrive or Download and Show Thumnail
         if let image = currentCase.image, let url = URL(string: image) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.retrieveAndSetImage(for: url)
@@ -183,36 +240,6 @@ extension CaseProgramaticalVC {
     }
 }
 
-// MARK: - Set QuestionView
-
-extension CaseProgramaticalVC {
-    
-    private func setContainerQuestion() {
-        view.addSubview(containerQuestion)
-        
-        let safeArea = view.safeAreaLayoutGuide
-        let constraintsContainerQuestion = [
-            containerQuestion.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 30),
-            containerQuestion.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
-            containerQuestion.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
-        ]
-        
-        NSLayoutConstraint.activate(constraintsContainerQuestion)
-        
-        addViewsToContainer()
-        setImageView()
-    }
-    
-    private func addViewsToContainer() {
-        containerQuestion.addArrangedSubview(lblQuestion)
-        containerQuestion.addArrangedSubview(imageViewThumnail)
-    }
-    
-    private func setImageView() {
-        imageViewThumnail.heightAnchor.constraint(equalTo: imageViewThumnail.widthAnchor, multiplier: 0.5).isActive = true
-    }
-}
-
 // MARK: - Show Alert
 
 extension CaseProgramaticalVC {
@@ -229,31 +256,11 @@ extension CaseProgramaticalVC {
     }
 }
 
-// MARK: - Set AnswerView
-
-extension CaseProgramaticalVC {
-    
-    private func setAnswerView() {
-        view.addSubview(answerView)
-        
-        answerView.delegate = self
-        
-        let safeArea = view.safeAreaLayoutGuide
-        let constraintsAnswerColectionView = [
-            answerView.topAnchor.constraint(equalTo: containerQuestion.bottomAnchor, constant: 16),
-            answerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            answerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
-            answerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
-        ]
-        NSLayoutConstraint.activate(constraintsAnswerColectionView)
-    }
-}
-
-// MARK: - LabelTableView Delegate
+// MARK: - OneLabelView Delegate
 
 extension CaseProgramaticalVC: OneLabelViewDelegate {
     
-    func didSelectedAnswer(at index: Int) {
+    func didSelectedElement(at index: Int) {
         /// Get next case from the selection
         if let nextCaseId = vm.getAnswer(at: index)?.caseId {
             vm.setNextCaseId(with: nextCaseId)

@@ -52,6 +52,12 @@ class LabelCVCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 8
         setLabelAnswer()
     }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        let attributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+        attributes.size = contentView.systemLayoutSizeFitting(layoutAttributes.size, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+        return attributes
+    }
 }
 
 // MARK: - set LabelAnswer

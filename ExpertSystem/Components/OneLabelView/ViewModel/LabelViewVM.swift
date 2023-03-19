@@ -7,10 +7,15 @@
 
 import Foundation
 
+enum StateScenario: String {
+    case Scenarios, Answers
+}
+
 class LabelViewVM: NSObject {
     
     // MARK: - Variables
     
+    var scenario: StateScenario = .Scenarios
     private var model: [String]?
     
     // Set Model

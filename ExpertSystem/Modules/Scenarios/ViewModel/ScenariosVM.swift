@@ -13,6 +13,10 @@ class ScenariosVM: NSObject {
     
     private var scenarios: [Scenario]?
     
+    func getScenarios() -> [Scenario]? {
+        return scenarios
+    }
+    
     func getScenariosCount() -> Int {
         return scenarios?.count ?? 0
     }

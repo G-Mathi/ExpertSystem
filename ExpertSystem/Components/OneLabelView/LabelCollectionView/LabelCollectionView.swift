@@ -51,8 +51,9 @@ class LabelCollectionView: UIView {
 
 extension LabelCollectionView {
     
-    func configure(with model: [String]) {
+    func configure(with model: [String], scenario: StateScenario) {
         vm.setModel(with: model)
+        vm.scenario = scenario
         
         DispatchQueue.main.async { [weak self] in
             self?.answerCollectioView.reloadData()
@@ -115,7 +116,7 @@ extension LabelCollectionView: UICollectionViewDataSource {
 extension LabelCollectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectedAnswer(at: indexPath.row)
+        delegate?.didSelectedElement(at: indexPath.row)
     }
 }
 
@@ -124,8 +125,16 @@ extension LabelCollectionView: UICollectionViewDelegate {
 extension LabelCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = answerCollectioView.frame.width
-        let height: CGFloat = 40
+        var width: CGFloat = answerCollectioView.frame.width
+        var height: CGFloat = 50
+        switch vm.scenario {
+        case .Scenarios:
+            height = 70
+            return CGSize(width: width, height: height)
+        case .Answers:
+            height = 44
+            
+        }
         return CGSize(width: width, height: height)
     }
     

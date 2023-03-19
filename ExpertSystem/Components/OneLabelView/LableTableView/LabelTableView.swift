@@ -51,8 +51,9 @@ class LabelTableView: UIView {
 
 extension LabelTableView {
     
-    func configure(with model: [String]) {
+    func configure(with model: [String], scenario: StateScenario) {
         vm.setModel(with: model)
+        vm.scenario = scenario
         
         DispatchQueue.main.async { [weak self] in
             self?.answerTableView.reloadData()
@@ -115,7 +116,7 @@ extension LabelTableView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.didSelectedAnswer(at: indexPath.row)
+        delegate?.didSelectedElement(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,7 +125,12 @@ extension LabelTableView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if vm.getModelCount() > 0 {
-            return .Answers
+            switch vm.scenario {
+            case .Scenarios:
+                return nil
+            case .Answers:
+                return .Answers
+            }
         } else {
             return nil
         }

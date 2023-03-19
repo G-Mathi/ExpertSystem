@@ -8,5 +8,5 @@
 import Foundation
 
 protocol OneLabelViewDelegate: AnyObject {
-    func didSelectedAnswer(at index: Int)
+    func didSelectedElement(at index: Int)
 }

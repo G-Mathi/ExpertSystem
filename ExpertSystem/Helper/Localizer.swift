@@ -34,5 +34,5 @@ extension String {
     
     static let Answers = NSLocalizedString("Answers", comment: "")
     static let Previous = NSLocalizedString("Previous", comment: "")
-    
+    static let Welcome = NSLocalizedString("Welcome", comment: "")
 }
