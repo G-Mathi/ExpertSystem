@@ -253,7 +253,6 @@
 				5FB7F3EF29C6DE6F00314DC4 /* Components */,
 				5F443DF429C5707E003FAD9C /* Utilities */,
 				5F2E164429C5B85C0096DD85 /* Helper */,
-				5F443DF529C5708F003FAD9C /* Extensions */,
 				5F443DF629C57097003FAD9C /* Assets */,
 				5F443DCC29C56FDE003FAD9C /* LaunchScreen.storyboard */,
 				5F443DCF29C56FDE003FAD9C /* Info.plist */,
@@ -317,13 +316,6 @@
 				5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		5F443DF529C5708F003FAD9C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5F443DF629C57097003FAD9C /* Assets */ = {

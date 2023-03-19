@@ -125,7 +125,7 @@ extension LabelCollectionView: UICollectionViewDelegate {
 extension LabelCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var width: CGFloat = answerCollectioView.frame.width
+        let width: CGFloat = answerCollectioView.frame.width
         var height: CGFloat = 50
         switch vm.scenario {
         case .Scenarios:
