@@ -33,6 +33,8 @@
 		5F443DE529C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */; };
 		5FB7F3EC29C6D44000314DC4 /* CaseProgramaticalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3EB29C6D44000314DC4 /* CaseProgramaticalVC.swift */; };
 		5FB7F3EE29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3ED29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift */; };
+		5FB7F3F329C6DED500314DC4 /* LabelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F229C6DED500314DC4 /* LabelListView.swift */; };
+		5FB7F3F629C6E75000314DC4 /* LabelListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F529C6E75000314DC4 /* LabelListVM.swift */; };
 		5FBA5EE329C5EF6B00FC7774 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE229C5EF6B00FC7774 /* Strings.swift */; };
 		5FBA5EE529C5F5B200FC7774 /* InternetAvailablility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,8 @@
 		5F443DE429C56FDE003FAD9C /* ExpertSystemUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertSystemUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5FB7F3EB29C6D44000314DC4 /* CaseProgramaticalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseProgramaticalVC.swift; sourceTree = "<group>"; };
 		5FB7F3ED29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerProgramaticalTVCell.swift; sourceTree = "<group>"; };
+		5FB7F3F229C6DED500314DC4 /* LabelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListView.swift; sourceTree = "<group>"; };
+		5FB7F3F529C6E75000314DC4 /* LabelListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListVM.swift; sourceTree = "<group>"; };
 		5FBA5EE229C5EF6B00FC7774 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetAvailablility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -339,6 +343,7 @@
 		5FB7F3E829C6D3FD00314DC4 /* Programmatical */ = {
 			isa = PBXGroup;
 			children = (
+				5FB7F3EF29C6DE6F00314DC4 /* Components */,
 				5FB7F3E929C6D41200314DC4 /* Case */,
 			);
 			path = Programmatical;
@@ -359,6 +364,39 @@
 				5FB7F3ED29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5FB7F3EF29C6DE6F00314DC4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5FB7F3F029C6DE7700314DC4 /* TableView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5FB7F3F029C6DE7700314DC4 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5FB7F3F129C6DE7E00314DC4 /* View */,
+				5FB7F3F429C6E73E00314DC4 /* ViewModel */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		5FB7F3F129C6DE7E00314DC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FB7F3F229C6DED500314DC4 /* LabelListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FB7F3F429C6E73E00314DC4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5FB7F3F529C6E75000314DC4 /* LabelListVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,6 +539,7 @@
 				5F2E163F29C5B0460096DD85 /* CaseVM.swift in Sources */,
 				5F2E164329C5B7FA0096DD85 /* AlertProvider.swift in Sources */,
 				5F2E162629C5765D0096DD85 /* ScenariosAPI.swift in Sources */,
+				5FB7F3F329C6DED500314DC4 /* LabelListView.swift in Sources */,
 				5FB7F3EE29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift in Sources */,
 				5F2E163D29C5B0280096DD85 /* CaseVC.swift in Sources */,
 				5FBA5EE529C5F5B200FC7774 /* InternetAvailablility.swift in Sources */,
@@ -515,6 +554,7 @@
 				5F2E162C29C57A030096DD85 /* Scenario.swift in Sources */,
 				5F2E162229C573500096DD85 /* EndPoints.swift in Sources */,
 				5F2E163B29C5AB110096DD85 /* ScenarioTVCell.swift in Sources */,
+				5FB7F3F629C6E75000314DC4 /* LabelListVM.swift in Sources */,
 				5F2E162429C5749D0096DD85 /* APIEnvironment.swift in Sources */,
 				5F2E164629C5B8660096DD85 /* Localizer.swift in Sources */,
 				5F2E161E29C5725B0096DD85 /* ServiceHelper.swift in Sources */,
