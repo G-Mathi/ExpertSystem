@@ -2,7 +2,7 @@
 
 MVVM architecture used to develop the app.
 App is build in both Storyboard & Programmatical approch.
-Component based programming used for Programmatical approch to be very flexible and loosly coupled.
+Component based programming used for Programmatical approch to achieve reusability, flexibility and loose coupling.
 
 ## Technologies
 
