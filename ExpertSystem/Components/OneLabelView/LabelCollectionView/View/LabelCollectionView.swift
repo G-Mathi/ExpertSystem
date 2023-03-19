@@ -73,8 +73,8 @@ extension LabelCollectionView {
         answerCollectioView.delegate = self
         answerCollectioView.dataSource = self
         answerCollectioView.register(
-            AnswerProgramaticalCVCell.self,
-            forCellWithReuseIdentifier: AnswerProgramaticalCVCell.identifier
+            LabelCVCell.self,
+            forCellWithReuseIdentifier: LabelCVCell.identifier
         )
         
         let constraintsAnswerTableView = [
@@ -102,7 +102,7 @@ extension LabelCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnswerProgramaticalCVCell.identifier, for: indexPath) as? AnswerProgramaticalCVCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabelCVCell.identifier, for: indexPath) as? LabelCVCell {
             
             if let answer = vm.getElement(at: indexPath.row) {
                 cell.configure(with: answer)
