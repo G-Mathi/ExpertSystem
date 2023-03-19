@@ -8,6 +8,6 @@ Component based programming used for Programmatical approch to be very flexible 
 
 * Xcode Version 14.1 (14B47b)
 * Minimum iOS SDK version 14.0
-* Mobile potrait support only
+* Mobile potrait & iPad potrait support only
 * iOS Archiecture: MVVM
 * Caching: AlamofireImage
