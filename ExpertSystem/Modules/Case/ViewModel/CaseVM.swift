@@ -12,26 +12,55 @@ class CaseVM: NSObject {
     // MARK: - Variables
     
     private var initialCaseId: Int?
-    private var selectedCase: Case?
+    private var nextCaseId: Int?
+    private var previousCaseId: Int?
+    private var currentCase: Case?
     
+    // MARK: - Configuration Helpers
+    
+    func getAnswersCount() -> Int {
+        return currentCase?.answers?.count ?? 0
+    }
+    
+    func getAnswer(at index: Int) -> Scenario? {
+        return currentCase?.answers?[index]
+    }
+}
+
+// MARK: - Get Set
+
+extension CaseVM {
+    
+    // InitialCaseId
     public func setInitialCaseId(with id: Int) {
         initialCaseId = id
     }
-    
+
     func getInitialCaseId() -> Int? {
         return initialCaseId
     }
     
-    func getSelectedCase() -> Case? {
-        return selectedCase
+    // NextCaseId
+    public func setNextCaseId(with id: Int) {
+        nextCaseId = id
     }
     
-    func getAnswersCount() -> Int {
-        return selectedCase?.answers?.count ?? 0
+    func getNextCaseId() -> Int? {
+        return nextCaseId
     }
     
-    func getAnswer(at index: Int) -> Scenario? {
-        return selectedCase?.answers?[index]
+    // PreviousCaseId
+    public func setPreviousCaseId(with id: Int) {
+        previousCaseId = id
+    }
+    
+    func getPreviousCaseId() -> Int? {
+        return previousCaseId
+    }
+    
+    // CurrentCase
+    func getCurrentCase() -> Case? {
+        return currentCase
     }
 }
 
@@ -44,7 +73,7 @@ extension CaseVM {
         CaseAPI.getCaseData(of: caseId) { [weak self] result in
             switch result {
             case .success(let cases):
-                self?.selectedCase = cases.first
+                self?.currentCase = cases.first
                 completion(true, nil)
                 
             case .failure(let error):

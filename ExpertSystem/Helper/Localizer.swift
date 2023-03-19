@@ -33,5 +33,6 @@ extension String {
     // MARK: - Other
     
     static let Answers = NSLocalizedString("Answers", comment: "")
+    static let Previous = NSLocalizedString("Previous", comment: "")
     
 }

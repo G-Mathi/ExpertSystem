@@ -26,13 +26,18 @@ class CaseVC: UIViewController {
         }
     }
     
+    private var barBtnPrevious: UIBarButtonItem = {
+        var barButtonItem = UIBarButtonItem()
+        return barButtonItem
+    }()
+    
     // MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        initialCaseConfiguration()
+        setUIAccordingToCaseId(for: vm.getInitialCaseId())
     }
     
     // MARK: - SetupUI
@@ -50,9 +55,9 @@ class CaseVC: UIViewController {
         answersTableView.isHidden = isEmpty
     }
     
-    private func initialCaseConfiguration() {
-        /// Check for initialCaseId availability
-        guard let selectedCaseId = vm.getInitialCaseId() else {
+    private func setUIAccordingToCaseId(for caseId: Int?) {
+        /// Check for CaseId availability, Incase caseId missed from backend show alert
+        guard let caseId else {
             showFailedAlert(title: .Sorry, message: .UpdateApp)
             return
         }
@@ -60,7 +65,26 @@ class CaseVC: UIViewController {
         /// Call request to GET data in Background Thread
         /// As it called from a touch action and high priority QOS set to UserInitiated
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.getCaseAndConfigure(caseId: selectedCaseId)
+            self?.getCaseAndConfigure(caseId: caseId)
+        }
+    }
+    
+    private func setPreviouButton() {
+        barBtnPrevious.title = .Previous
+        barBtnPrevious.target = self
+        barBtnPrevious.action = #selector(didTapOnPreviousButton(_:))
+    }
+    
+    @objc private func didTapOnPreviousButton(_ sender: UIBarButtonItem) {
+        setUIAccordingToCaseId(for: vm.getPreviousCaseId())
+    }
+    
+    private func checkPreviousButtonState() {
+        if navigationItem.rightBarButtonItem == nil {
+            if let previousCaseId = vm.getPreviousCaseId(), previousCaseId != vm.getInitialCaseId() {
+                setPreviouButton()
+                self.navigationItem.rightBarButtonItem = barBtnPrevious
+            }
         }
     }
 }
@@ -71,18 +95,26 @@ extension CaseVC {
     
     private func configure() {
         
+        /// Show Previous Button, if not Initial case
+        checkPreviousButtonState()
+        
+        /// If CurrentCase available, Then set PreviousCaseID to get prevoius Case
+        if let currentCaseId = vm.getCurrentCase()?.id {
+            vm.setPreviousCaseId(with: currentCaseId)
+        }
+        
         /// If Selected case available configure the UI with appropirate data
-        guard let selectedCase = vm.getSelectedCase() else {
+        guard let currentCase = vm.getCurrentCase() else {
             showFailedAlert(title: .Sorry, message: .SomethingWentWrong)
             return
         }
         
         setScreenState(isEmpty: false)
         
-        lblCase.text = selectedCase.text
+        lblCase.text = currentCase.text
         answersTableView.reloadData()
         
-        if let image = selectedCase.image, let url = URL(string: image) {
+        if let image = currentCase.image, let url = URL(string: image) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.retrieveAndSetImage(for: url)
             }
@@ -144,7 +176,6 @@ extension CaseVC {
     }
 }
 
-
 // MARK: - Show Alert
 
 extension CaseVC {
@@ -191,7 +222,12 @@ extension CaseVC: UITableViewDataSource {
 extension CaseVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /// Get next case from the selection
+        if let nextCaseId = vm.getAnswer(at: indexPath.row)?.caseId {
+            vm.setNextCaseId(with: nextCaseId)
+        }
         
+        setUIAccordingToCaseId(for: vm.getNextCaseId())
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -199,6 +235,10 @@ extension CaseVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return .Answers
+        if vm.getAnswersCount() > 0 {
+            return .Answers
+        } else {
+            return nil
+        }
     }
 }
