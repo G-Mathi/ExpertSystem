@@ -119,11 +119,16 @@ extension ScenariosVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let caseId = vm.getScenario(at: indexPath.row)?.caseId {
-            let storyBoard = UIStoryboard(name: .StoryBoard.Main.rawValue, bundle: nil)
-            if let caseVC = storyBoard.instantiateViewController(withIdentifier: .Controllers.Case.rawValue) as? CaseVC {
-                caseVC.vm.setInitialCaseId(with: caseId)
-                self.navigationController?.pushViewController(caseVC, animated: true)
-            }
+            
+//            let storyBoard = UIStoryboard(name: .StoryBoard.Main.rawValue, bundle: nil)
+//            if let caseVC = storyBoard.instantiateViewController(withIdentifier: .Controllers.Case.rawValue) as? CaseVC {
+//                caseVC.vm.setInitialCaseId(with: caseId)
+//                self.navigationController?.pushViewController(caseVC, animated: true)
+//            }
+            
+            let caseVC = CaseProgramaticalVC()
+            caseVC.vm.setInitialCaseId(with: caseId)
+            self.navigationController?.pushViewController(caseVC, animated: true)
         }
     }
     

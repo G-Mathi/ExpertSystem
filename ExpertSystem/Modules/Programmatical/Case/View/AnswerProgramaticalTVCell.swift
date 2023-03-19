@@ -2,7 +2,7 @@
 //  AnswerProgramaticalTVCell.swift
 //  ExpertSystem
 //
-//  Created by dilax on 2023-03-19.
+//  Created by Mathi on 2023-03-19.
 //
 
 import UIKit
@@ -50,6 +50,20 @@ class AnswerProgramaticalTVCell: UITableViewCell {
     }
     
     private func setupUI() {
+        setLabelAnswer()
+        
+        lblAnswer.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        lblAnswer.layer.cornerRadius = 8
+        lblAnswer.layer.borderWidth = 1
+        lblAnswer.layer.borderColor = UIColor.lightGray.cgColor
+    }
+}
+
+// MARK: - set LabelAnswer
+
+extension AnswerProgramaticalTVCell {
+    
+    private func setLabelAnswer() {
         let constraintsLabel = [
             lblAnswer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             lblAnswer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
