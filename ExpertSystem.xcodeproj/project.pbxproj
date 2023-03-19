@@ -35,6 +35,7 @@
 		5FB7F3EE29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3ED29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift */; };
 		5FB7F3F329C6DED500314DC4 /* LabelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F229C6DED500314DC4 /* LabelListView.swift */; };
 		5FB7F3F629C6E75000314DC4 /* LabelListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F529C6E75000314DC4 /* LabelListVM.swift */; };
+		5FB7F3F829C6EDE200314DC4 /* AnswerProgramaticalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7F3F729C6EDE200314DC4 /* AnswerProgramaticalCVCell.swift */; };
 		5FBA5EE329C5EF6B00FC7774 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE229C5EF6B00FC7774 /* Strings.swift */; };
 		5FBA5EE529C5F5B200FC7774 /* InternetAvailablility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		5FB7F3ED29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerProgramaticalTVCell.swift; sourceTree = "<group>"; };
 		5FB7F3F229C6DED500314DC4 /* LabelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListView.swift; sourceTree = "<group>"; };
 		5FB7F3F529C6E75000314DC4 /* LabelListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListVM.swift; sourceTree = "<group>"; };
+		5FB7F3F729C6EDE200314DC4 /* AnswerProgramaticalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerProgramaticalCVCell.swift; sourceTree = "<group>"; };
 		5FBA5EE229C5EF6B00FC7774 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		5FBA5EE429C5F5B200FC7774 /* InternetAvailablility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetAvailablility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -362,6 +364,7 @@
 			children = (
 				5FB7F3EB29C6D44000314DC4 /* CaseProgramaticalVC.swift */,
 				5FB7F3ED29C6D6BA00314DC4 /* AnswerProgramaticalTVCell.swift */,
+				5FB7F3F729C6EDE200314DC4 /* AnswerProgramaticalCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				5FBA5EE529C5F5B200FC7774 /* InternetAvailablility.swift in Sources */,
 				5F2E163929C5AA730096DD85 /* ScenariosVM.swift in Sources */,
 				5F2E163229C598370096DD85 /* Case.swift in Sources */,
+				5FB7F3F829C6EDE200314DC4 /* AnswerProgramaticalCVCell.swift in Sources */,
 				5F2E163729C5A3990096DD85 /* ScenariosVC.swift in Sources */,
 				5F2E164129C5B17E0096DD85 /* AnswerTVCell.swift in Sources */,
 				5F443DC229C56FD9003FAD9C /* AppDelegate.swift in Sources */,

@@ -45,15 +45,25 @@ class CaseProgramaticalVC: UIViewController {
         return imageView
     }()
     
-    // Answer TableView
-    private var answerTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
-        tableView.backgroundColor = .clear
-        return tableView
+//    // Answer TableView
+//    private var answerTableView: UITableView = {
+//        let tableView = UITableView(frame: .zero, style: .plain)
+//        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.separatorStyle = .none
+//        tableView.showsVerticalScrollIndicator = false
+//        tableView.backgroundColor = .clear
+//        return tableView
+//    }()
+    
+    private var answerCollectioView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
     }()
     
     // MARK: - View LifeCycle
@@ -71,7 +81,8 @@ class CaseProgramaticalVC: UIViewController {
         view.backgroundColor = .systemBackground
         
         setContainerQuestion()
-        setAnswerTableView()
+//        setAnswerTableView()
+        setAnswerColectionView()
         
         setScreenState(isEmpty: true)
     }
@@ -79,7 +90,8 @@ class CaseProgramaticalVC: UIViewController {
     private func setScreenState(isEmpty: Bool) {
         lblQuestion.isHidden = isEmpty
         imageViewThumnail.isHidden = isEmpty
-        answerTableView.isHidden = isEmpty
+//        answerTableView.isHidden = isEmpty
+        answerCollectioView.isHidden = isEmpty
     }
     
     private func setUIAccordingToCaseId(for caseId: Int?) {
@@ -112,7 +124,8 @@ extension CaseProgramaticalVC {
         setScreenState(isEmpty: false)
         
         lblQuestion.text = currentCase.text
-        answerTableView.reloadData()
+//        answerTableView.reloadData()
+        answerCollectioView.reloadData()
         
         if let image = currentCase.image, let url = URL(string: image) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -226,25 +239,50 @@ extension CaseProgramaticalVC {
 
 extension CaseProgramaticalVC {
     
-    private func setAnswerTableView() {
-        view.addSubview(answerTableView)
+//    private func setAnswerTableView() {
+//        view.addSubview(answerTableView)
+//
+//        answerTableView.delegate = self
+//        answerTableView.dataSource = self
+//        answerTableView.register(
+//            AnswerProgramaticalTVCell.self,
+//            forCellReuseIdentifier: AnswerProgramaticalTVCell.identifier
+//        )
+//
+//        let safeArea = view.safeAreaLayoutGuide
+//        let constraintsAnswerTableView = [
+//            answerTableView.topAnchor.constraint(equalTo: containerQuestion.bottomAnchor, constant: 16),
+//            answerTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+//            answerTableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
+//            answerTableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
+//        ]
+//
+//        NSLayoutConstraint.activate(constraintsAnswerTableView)
+//    }
+}
+
+// MARK: - Set AnswerColectionView
+
+extension CaseProgramaticalVC {
+    
+    private func setAnswerColectionView() {
+        view.addSubview(answerCollectioView)
         
-        answerTableView.delegate = self
-        answerTableView.dataSource = self
-        answerTableView.register(
-            AnswerProgramaticalTVCell.self,
-            forCellReuseIdentifier: AnswerProgramaticalTVCell.identifier
+        answerCollectioView.delegate = self
+        answerCollectioView.dataSource = self
+        answerCollectioView.register(
+            AnswerProgramaticalCVCell.self,
+            forCellWithReuseIdentifier: AnswerProgramaticalCVCell.identifier
         )
         
         let safeArea = view.safeAreaLayoutGuide
-        let constraintsAnswerTableView = [
-            answerTableView.topAnchor.constraint(equalTo: containerQuestion.bottomAnchor, constant: 16),
-            answerTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            answerTableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
-            answerTableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
-        ]
-        
-        NSLayoutConstraint.activate(constraintsAnswerTableView)
+        let constraintsAnswerColectionView = [
+            answerCollectioView.topAnchor.constraint(equalTo: containerQuestion.bottomAnchor, constant: 16),
+            answerCollectioView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            answerCollectioView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 12),
+            answerCollectioView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -12)
+                ]
+        NSLayoutConstraint.activate(constraintsAnswerColectionView)
     }
 }
 
@@ -278,7 +316,7 @@ extension CaseProgramaticalVC: UITableViewDataSource {
 extension CaseProgramaticalVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
         /// Get next case from the selection
         if let nextCaseId = vm.getAnswer(at: indexPath.row)?.caseId {
             vm.setNextCaseId(with: nextCaseId)
@@ -297,5 +335,60 @@ extension CaseProgramaticalVC: UITableViewDelegate {
         } else {
             return nil
         }
+    }
+}
+
+// MARK: - CollectionView DataSource
+
+extension CaseProgramaticalVC: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return vm.getAnswersCount()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnswerProgramaticalCVCell.identifier, for: indexPath) as? AnswerProgramaticalCVCell {
+            
+            if let answer = vm.getAnswer(at: indexPath.row)?.text {
+                cell.configure(with: answer)
+            }
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
+}
+
+// MARK: - CollectionView Delegate
+
+extension CaseProgramaticalVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /// Get next case from the selection
+        if let nextCaseId = vm.getAnswer(at: indexPath.row)?.caseId {
+            vm.setNextCaseId(with: nextCaseId)
+        }
+        
+        setUIAccordingToCaseId(for: vm.getNextCaseId())
+    }
+}
+
+// MARK: - CollectionView FlowLayout
+
+extension CaseProgramaticalVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = answerCollectioView.frame.width
+        let height: CGFloat = 40
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
