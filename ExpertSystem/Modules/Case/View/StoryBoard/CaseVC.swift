@@ -26,11 +26,6 @@ class CaseVC: UIViewController {
         }
     }
     
-    private var barBtnPrevious: UIBarButtonItem = {
-        var barButtonItem = UIBarButtonItem()
-        return barButtonItem
-    }()
-    
     // MARK: - View LifeCycle
     
     override func viewDidLoad() {
@@ -68,25 +63,6 @@ class CaseVC: UIViewController {
             self?.getCaseAndConfigure(caseId: caseId)
         }
     }
-    
-    private func setPreviouButton() {
-        barBtnPrevious.title = .Previous
-        barBtnPrevious.target = self
-        barBtnPrevious.action = #selector(didTapOnPreviousButton(_:))
-    }
-    
-    @objc private func didTapOnPreviousButton(_ sender: UIBarButtonItem) {
-        setUIAccordingToCaseId(for: vm.getPreviousCaseId())
-    }
-    
-    private func checkPreviousButtonState() {
-        if navigationItem.rightBarButtonItem == nil {
-            if let previousCaseId = vm.getPreviousCaseId(), previousCaseId != vm.getInitialCaseId() {
-                setPreviouButton()
-                self.navigationItem.rightBarButtonItem = barBtnPrevious
-            }
-        }
-    }
 }
 
 // MARK: - Configure
@@ -95,25 +71,20 @@ extension CaseVC {
     
     private func configure() {
         
-        /// Show Previous Button, if not Initial case
-        checkPreviousButtonState()
-        
-        /// If CurrentCase available, Then set PreviousCaseID to get prevoius Case
-        if let currentCaseId = vm.getCurrentCase()?.id {
-            vm.setPreviousCaseId(with: currentCaseId)
-        }
-        
         /// If Selected case available configure the UI with appropirate data
         guard let currentCase = vm.getCurrentCase() else {
             showFailedAlert(title: .Sorry, message: .SomethingWentWrong)
             return
         }
         
+        /// Set Screen State
         setScreenState(isEmpty: false)
         
+        /// Set Question
         lblCase.text = currentCase.text
         answersTableView.reloadData()
         
+        /// Retrive or Download and Show Thumnail
         if let image = currentCase.image, let url = URL(string: image) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.retrieveAndSetImage(for: url)
