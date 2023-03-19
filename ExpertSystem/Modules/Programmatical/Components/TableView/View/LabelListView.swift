@@ -7,7 +7,16 @@
 
 import UIKit
 
+protocol LabelListViewDelegate: AnyObject {
+    func didSelectedAnswer(at index: Int)
+}
+
 class LabelListView: UIView {
+    
+    // MARK: - Variables
+    
+    private let vm = LabelListVM()
+    weak var delegate: LabelListViewDelegate?
     
     // MARK: - Components
     
@@ -85,11 +94,19 @@ extension LabelListView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return vm.getModelCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: AnswerProgramaticalTVCell.identifier, for: indexPath) as? AnswerProgramaticalTVCell {
+            
+            if let answer = vm.getElement(at: indexPath.row) {
+                cell.configure(with: answer)
+            }
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
 }
 
@@ -98,6 +115,6 @@ extension LabelListView: UITableViewDataSource {
 extension LabelListView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        delegate?.didSelectedAnswer(at: indexPath.row)
     }
 }
