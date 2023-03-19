@@ -2,27 +2,27 @@
 //  LabelListView.swift
 //  ExpertSystem
 //
-//  Created by dilax on 2023-03-19.
+//  Created by Mathi on 2023-03-19.
 //
 
 import UIKit
 
-protocol LabelListViewDelegate: AnyObject {
+protocol LabelTableViewDelegate: AnyObject {
     func didSelectedAnswer(at index: Int)
 }
 
-class LabelListView: UIView {
+class LabelTableView: UIView {
     
     // MARK: - Variables
     
-    private let vm = LabelListVM()
-    weak var delegate: LabelListViewDelegate?
+    private let vm = LabelViewVM()
+    weak var delegate: LabelTableViewDelegate?
     
     // MARK: - Components
     
     private var answerTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -34,6 +34,7 @@ class LabelListView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         self.addSubview(answerTableView)
     }
     
@@ -52,9 +53,11 @@ class LabelListView: UIView {
 
 // MARK: - Configure
 
-extension LabelListView {
+extension LabelTableView {
     
     func configure(with model: [String]) {
+        vm.setModel(with: model)
+        
         DispatchQueue.main.async { [weak self] in
             self?.answerTableView.reloadData()
         }
@@ -63,15 +66,15 @@ extension LabelListView {
 
 // MARK: - Set AnswerTableView
 
-extension LabelListView {
+extension LabelTableView {
     
     private func setAnswerTableView() {
         
         answerTableView.delegate = self
         answerTableView.dataSource = self
         answerTableView.register(
-            AnswerProgramaticalTVCell.self,
-            forCellReuseIdentifier: AnswerProgramaticalTVCell.identifier
+            LabelTVCell.self,
+            forCellReuseIdentifier: LabelTVCell.identifier
         )
         
         let constraintsAnswerTableView = [
@@ -87,7 +90,7 @@ extension LabelListView {
 
 // MARK: - TableView DataSource
 
-extension LabelListView: UITableViewDataSource {
+extension LabelTableView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -98,7 +101,7 @@ extension LabelListView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: AnswerProgramaticalTVCell.identifier, for: indexPath) as? AnswerProgramaticalTVCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: LabelTVCell.identifier, for: indexPath) as? LabelTVCell {
             
             if let answer = vm.getElement(at: indexPath.row) {
                 cell.configure(with: answer)
@@ -112,9 +115,22 @@ extension LabelListView: UITableViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension LabelListView: UITableViewDelegate {
+extension LabelTableView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.didSelectedAnswer(at: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if vm.getModelCount() > 0 {
+            return .Answers
+        } else {
+            return nil
+        }
     }
 }

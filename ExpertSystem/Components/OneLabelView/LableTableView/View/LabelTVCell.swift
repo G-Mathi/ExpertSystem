@@ -7,8 +7,8 @@
 
 import UIKit
 
-class AnswerProgramaticalTVCell: UITableViewCell {
-    static let identifier = "AnswerProgramaticalTVCell"
+class LabelTVCell: UITableViewCell {
+    static let identifier = "LabelTVCell"
     
     // MARK: - Components
     
@@ -52,16 +52,16 @@ class AnswerProgramaticalTVCell: UITableViewCell {
     private func setupUI() {
         setLabelAnswer()
         
-        lblAnswer.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-        lblAnswer.layer.cornerRadius = 8
-        lblAnswer.layer.borderWidth = 1
-        lblAnswer.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0))
+        contentView.layer.cornerRadius = 8
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
     }
 }
 
 // MARK: - set LabelAnswer
 
-extension AnswerProgramaticalTVCell {
+extension LabelTVCell {
     
     private func setLabelAnswer() {
         let constraintsLabel = [
@@ -77,7 +77,7 @@ extension AnswerProgramaticalTVCell {
 
 // MARK: - Configure
 
-extension AnswerProgramaticalTVCell {
+extension LabelTVCell {
     
     func configure(with answer: String?) {
         if let answer {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LabelListVM: NSObject {
+class LabelViewVM: NSObject {
     
     // MARK: - Variables
     
